@@ -8,18 +8,28 @@ const flash = require('connect-flash');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-
+const usermodel = require('./users');
+const passport = require('passport');
+// const localstrat = require('passport-local');
+// passport.use(new localstrat(usermodel.authenticate()));
 var app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
+// line 19 to 29 is code use for auth
 app.use(session({
   resave:false,
   saveUninitialized:false,
   secret:'heyheyhaa'
 })
 );
+app.use(passport.initialize());
+app.use(passport.session());
+passport.serializeUser(usersRouter.serializeUser());
+passport.deserializeUser(usersRouter.deserializeUser());
+
 app.use(flash());
 app.use(logger('dev'));
 app.use(express.json());
