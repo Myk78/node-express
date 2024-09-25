@@ -2,9 +2,12 @@ const express = require("express");
 const router = express.Router();
 
 const ownerModel = require("../models/adminModel");
-router.get("/", (req, res) => {
-  res.send("hey it's working");
+
+router.get("/panel", (req, res) => {
+  let success = req.flash("success");
+  res.render("createproducts", { success });
 });
+
 process.env.NODE_ENV = "development";
 if (process.env.NODE_ENV === "development") {
   router.post("/create", async (req, res) => {

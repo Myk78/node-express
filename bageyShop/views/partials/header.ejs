@@ -12,8 +12,21 @@
   </head>
 
   <body class="font-['helvetica_now_display']">
-    <nav class="w-full fixed top-0 left-0 px-5 py-3">
+    <nav class="w-full flex justify-between py-3 px-5">
       <h3 class="text-xl">BhagyShop</h3>
+      <% if (loggedIn) { %>
+      <div class="flex gap-5">
+        <a href="/shop">Shop</a>
+        <a href="/cart">Cart</a>
+        <a href="/account">My Account</a>
+        <a href="/users/logout" class="text-red-500">Logout</a>
+      </div>
+      <% }else { %>
+      <div class="flex gap-5">
+        <a href="/login">Login</a>
+        <!-- <a href="/register">Register</a> -->
+      </div>
+      <% } %>
     </nav>
   </body>
 </html>

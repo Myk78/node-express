@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
 
-var { registeruser } = require("../controller/Oauth");
+var { registeruser, loginUser, logout } = require("../controller/Oauth");
 
 /* GET users listing. */
 router.get("/", function (req, res, next) {
@@ -9,5 +9,7 @@ router.get("/", function (req, res, next) {
 });
 
 router.post("/register", registeruser);
+router.post("/login", loginUser);
+router.get("/logout", logout);
 
 module.exports = router;
