@@ -1,0 +1,43 @@
+<%- include('./partials/header') %> <% if (success.length > 0) { %>
+<div
+  class="absolute top-5 left-1/2 -translate-x-1/2 -translate-y-1/2 p-3 rounded-md bg-blue-500"
+>
+  <span class="inline-block mt-1 mb-1 text-white"> <%= success %> </span>
+</div>
+<% } %>
+
+<div class="min-h-screen flex flex-col">
+  <div class="container px-10 py-20 flex flex-grow">
+    <main class="w-full bg-white p-8 shadow ml-4">
+      <h2 class="text-xl font-bold mb-4">Accounts Details</h2>
+      <form autocomplete="off" action="/account/updateInfo" method="POST">
+        <div>
+          <h3 class="text-lg font-semibold mb-2">User Info</h3>
+          <div class="grid grid-cols-2 gap-4">
+            <input
+              name="fullname"
+              type="text"
+              placeholder="Full Name"
+              class="border p-2 rounded w-full"
+              value="<%= user.fullname %>"
+            />
+            <input
+              name="email"
+              type="text"
+              placeholder="Email"
+              class="border p-2 rounded w-full"
+              value="<%= user.email %>"
+            />
+          </div>
+        </div>
+        <input
+          class="px-5 py-2 rounded mt-3 bg-blue-500 text-white"
+          type="submit"
+          value="Update Info"
+        />
+      </form>
+    </main>
+  </div>
+</div>
+
+<%- include('./partials/footer') %>

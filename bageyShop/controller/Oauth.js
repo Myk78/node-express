@@ -19,7 +19,6 @@ module.exports.registeruser = async function (req, res, next) {
       if (err) return res.status(500).send(err.message);
       bcrypt.hash(password, salt, async function (err, hash) {
         if (err) return res.status(500).send(err.message);
-        if (err) return res.send(err.message);
         else {
           let createdUser = await userModel.create({
             fullname,

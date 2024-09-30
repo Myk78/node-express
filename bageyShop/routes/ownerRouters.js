@@ -2,10 +2,12 @@ const express = require("express");
 const router = express.Router();
 
 const ownerModel = require("../models/adminModel");
+const { isloggedIn } = require("../middleware/isloggedIn");
 
 router.get("/panel", (req, res) => {
   let success = req.flash("success");
-  res.render("createproducts", { success });
+
+  res.render("createproducts", { success, loggedIn: res.locals.loggedIn });
 });
 
 process.env.NODE_ENV = "development";
